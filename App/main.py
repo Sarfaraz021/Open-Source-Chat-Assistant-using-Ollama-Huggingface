@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+# from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.prompts.prompt import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain.memory import ConversationBufferMemory
@@ -42,7 +42,7 @@ class RAGAssistant:
             chunk_size=1000, chunk_overlap=200)
         docs = text_splitter.split_documents(documents)
         # embeddings = OpenAIEmbeddings()
-        embeddings = HuggingFaceEmbeddings(model_name="distiluse-base-multilingual-cased-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
         vectbd = Chroma.from_documents(
         documents=docs,
@@ -77,7 +77,7 @@ class RAGAssistant:
             chunk_size=1000, chunk_overlap=200)
         docs = text_splitter.split_documents(documents)
         # embeddings = OpenAIEmbeddings()
-        embeddings = HuggingFaceEmbeddings(model_name="distiluse-base-multilingual-cased-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         vectbd = Chroma.from_documents(
         documents=docs,
         collection_name="rag-chroma",
