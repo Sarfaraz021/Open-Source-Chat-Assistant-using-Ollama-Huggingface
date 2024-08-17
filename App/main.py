@@ -25,7 +25,7 @@ class RAGAssistant:
         # self.relative_path = 'data'
         # self.filename = 'dummy.txt'
         # self.absolute_path = os.path.join(self.relative_path, self.filename)
-        self.absolute_path = "App\data\dummy.txt"
+        self.absolute_path = r"App\data\dummy.txt"
         self.initialize_retriever(self.absolute_path)
         # self.llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
         self.llm = ChatOllama(model="Mistral", temperature=0.7)
