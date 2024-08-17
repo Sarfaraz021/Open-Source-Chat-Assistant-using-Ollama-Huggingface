@@ -22,9 +22,9 @@ class RAGAssistant:
         # self.load_env_variables()
         self.setup_prompt_template()
         self.retriever = None
-        self.relative_path = 'data'
-        self.filename = 'dummy.txt'
-        self.absolute_path = os.path.join(self.relative_path, self.filename)
+        # self.relative_path = 'data'
+        self.filename = 'App\data\dummy.txt'
+        # self.absolute_path = os.path.join(self.relative_path, self.filename)
         # self.absolute_path = r"D:\Open-Source-Chat-Assistant\App\data\a.csv"
         self.initialize_retriever(self.absolute_path)
         # self.llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
