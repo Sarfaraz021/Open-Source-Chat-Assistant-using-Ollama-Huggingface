@@ -40,7 +40,7 @@ class RAGAssistant:
 
     def initialize_retriever(self, directory_path):
         """Initializes the retriever with documents from the specified directory path."""
-        loader = CSVLoader(directory_path)
+        loader = CSVLoader(directory_path, encoding='utf-8')
         documents = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000, chunk_overlap=200)
