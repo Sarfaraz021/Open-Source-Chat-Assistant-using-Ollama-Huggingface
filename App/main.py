@@ -12,9 +12,9 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 from prompt import prompt_template_text
-# import sys
-# __import__('pysqlite3')
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import sys
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 class RAGAssistant:
@@ -23,7 +23,7 @@ class RAGAssistant:
         self.setup_prompt_template()
         self.retriever = None
         self.relative_path = 'data'
-        self.filename = 'a.csv'
+        self.filename = 'dummy.txt'
         self.absolute_path = os.path.join(self.relative_path, self.filename)
         # self.absolute_path = r"D:\Open-Source-Chat-Assistant\App\data\a.csv"
         self.initialize_retriever(self.absolute_path)
