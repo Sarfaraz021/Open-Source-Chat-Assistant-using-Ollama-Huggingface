@@ -12,6 +12,9 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 from prompt import prompt_template_text
+import sys
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 class RAGAssistant:
