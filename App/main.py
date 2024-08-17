@@ -23,7 +23,7 @@ class RAGAssistant:
         self.setup_prompt_template()
         self.retriever = None
         self.relative_path = 'data'
-        self.filename = 'cnn.pdf'
+        self.filename = 'a.csv'
         self.absolute_path = os.path.join(self.relative_path, self.filename)
         self.absolute_path = os.path.join(self.relative_path, self.filename)
         self.initialize_retriever(self.absolute_path)
@@ -40,7 +40,7 @@ class RAGAssistant:
 
     def initialize_retriever(self, directory_path):
         """Initializes the retriever with documents from the specified directory path."""
-        loader = PyPDFLoader(directory_path)
+        loader = CSVLoader(directory_path, encoding='utf-8')
         documents = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000, chunk_overlap=200)
@@ -62,7 +62,7 @@ class RAGAssistant:
         elif file_path.endswith('.txt'):
             loader = TextLoader(file_path)
         elif file_path.endswith('.csv'):
-            loader = CSVLoader(file_path=file_path)
+            loader = CSVLoader(file_path=file_path, encoding='utf-8')
         elif file_path.endswith('.xlsx'):
             loader = UnstructuredExcelLoader(file_path, mode="elements")
         elif file_path.endswith('.docx'):
