@@ -12,9 +12,9 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 from prompt import prompt_template_text
-import sys
-__import__('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# import sys
+# __import__('pysqlite3')
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 class RAGAssistant:
@@ -25,7 +25,7 @@ class RAGAssistant:
         self.relative_path = 'data'
         self.filename = 'a.csv'
         self.absolute_path = os.path.join(self.relative_path, self.filename)
-        self.absolute_path = os.path.join(self.relative_path, self.filename)
+        # self.absolute_path = os.path.join(self.relative_path, self.filename)
         self.initialize_retriever(self.absolute_path)
         # self.llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
         self.llm = ChatOllama(model="Mistral", temperature=0.7)
@@ -40,7 +40,7 @@ class RAGAssistant:
 
     def initialize_retriever(self, directory_path):
         """Initializes the retriever with documents from the specified directory path."""
-        loader = CSVLoader(directory_path, encoding='utf-8')
+        loader = CSVLoader(directory_path)
         documents = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000, chunk_overlap=200)
@@ -62,7 +62,7 @@ class RAGAssistant:
         elif file_path.endswith('.txt'):
             loader = TextLoader(file_path)
         elif file_path.endswith('.csv'):
-            loader = CSVLoader(file_path=file_path, encoding='utf-8')
+            loader = CSVLoader(file_path=file_path)
         elif file_path.endswith('.xlsx'):
             loader = UnstructuredExcelLoader(file_path, mode="elements")
         elif file_path.endswith('.docx'):
