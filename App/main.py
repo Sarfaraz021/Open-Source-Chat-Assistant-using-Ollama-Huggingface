@@ -16,12 +16,13 @@ from prompt import prompt_template_text
 
 class RAGAssistant:
     def __init__(self):
-        self.load_env_variables()
+        # self.load_env_variables()
         self.setup_prompt_template()
         self.retriever = None
-        self.relative_path = 'Data'
-        self.filename = 'dummy.txt'
-        self.absolute_path = os.path.join(self.relative_path, self.filename)
+        # self.relative_path = 'data'
+        # self.filename = 'sample.csv'
+        # self.absolute_path = os.path.join(self.relative_path, self.filename)
+        self.absolute_path = r"D:\Open-Source-Chat-Assistant\App\data\a.csv"
         self.initialize_retriever(self.absolute_path)
         # self.llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
         self.llm = ChatOllama(model="Mistral", temperature=0.7)
@@ -36,7 +37,7 @@ class RAGAssistant:
 
     def initialize_retriever(self, directory_path):
         """Initializes the retriever with documents from the specified directory path."""
-        loader = TextLoader(directory_path)
+        loader = CSVLoader(directory_path)
         documents = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000, chunk_overlap=200)

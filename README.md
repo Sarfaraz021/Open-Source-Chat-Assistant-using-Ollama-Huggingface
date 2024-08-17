@@ -2,3 +2,5 @@
 
 1. `pip install langchain_community langchain_openai`
 2. `pip install docx2txt unstructured "unstructured[docx]" "unstructured[pdf]" fpdf PyPDF2 python-dotenv`
+3. `pip install streamlit`
+4. `pip install chromadb`
