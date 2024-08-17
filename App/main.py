@@ -23,7 +23,7 @@ class RAGAssistant:
         self.setup_prompt_template()
         self.retriever = None
         self.relative_path = 'data'
-        self.filename = 'dummy.txt'
+        self.filename = 'a.csv'
         self.absolute_path = os.path.join(self.relative_path, self.filename)
         # self.absolute_path = r"App\data\dummy.txt"
         self.initialize_retriever(self.absolute_path)
@@ -40,7 +40,7 @@ class RAGAssistant:
 
     def initialize_retriever(self, directory_path):
         """Initializes the retriever with documents from the specified directory path."""
-        loader = TextLoader(directory_path)
+        loader = CSVLoader(directory_path)
         documents = loader.load()
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000, chunk_overlap=200)
